@@ -121,7 +121,7 @@
             .block 
               img(src="../assets/images/components/dino-sketching.gif")
     section#map
-    section#instagram
+    section#instafeed
       .row
       .overlay
         .inner
@@ -130,7 +130,43 @@
 </template>
 
 <script>
+// import request from 'superAgent'
+import Instafeed from 'instafeed.js'
 export default {
+  mounted () {
+    var feed = new Instafeed({
+      get: 'user',
+      userId: '2230806826',
+      accessToken: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072'
+    })
+    feed.run()
+    // request
+    // .get('https://api.instagram.com/v1/users/self/media/recent/')
+    // .query({access_token: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072'})
+    // .end(function (err, res) {
+    //   if (err || !res.ok) {
+    //     // alert('Oh no! error');
+    //     console.log(err)
+    //   } else {
+    //     // alert('yay got ' + JSON.stringify(res.body));
+    //     console.log(res.body)
+    //   }
+    // })
+    // request
+    // .get('https://api.instagram.com/oauth/authorize/')
+    // .query({ client_id: '1ef4bf16979c442a8674cb1b58f79bca' })
+    // .query({ redirect_uri: 'http://localhost:8080' })
+    // .query({ response_type: 'token' })
+    // .end(function (err, res) {
+    //   if (err || !res.ok) {
+    //     // alert('Oh no! error');
+    //     console.log(err)
+    //   } else {
+    //     // alert('yay got ' + JSON.stringify(res.body));
+    //     console.log(res.body)
+    //   }
+    // })
+  },
   components: {
   }
 }

@@ -4,27 +4,27 @@
       img(src="images/components/sticky-brand.svg")
     ul
       li
-        a(href="/#wrapper")
+        router-link(to="/#wrapper", activeClass="active")
           span 首頁
           span HOME
       li
-        a(href="/#fun")
+        router-link(to="/#fun", activeClass="active")
           span 遊戲
           span FUN
       li
-        a(href="/#foods")
+        router-link(to="/#foods", activeClass="active")
           span 美食
           span FOODS
       li
-        a(href="/#reservation")
+        router-link(to="/#reservation", activeClass="active")
           span 預約規則
           span RESERVATION
       li
-        a(href="/#map")
+        router-link(to="/#map", activeClass="active")
           span 導航
           span LOCATION
       li
-        a(href="/wall")
+        router-link(to="/wall", activeClass="active")
           span 照片牆
           span PHOTOWALL
     a.js-mobile-trigger.mobile-trigger.icons-mobile-btn.sb-toggle-left(href='javascript:;')
