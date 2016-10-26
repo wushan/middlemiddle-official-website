@@ -222,6 +222,7 @@ export default {
       background-position: center;
       font-size: 0;
       position: relative;
+      overflow: hidden;
       p {
         display: none;
       }

@@ -1,9 +1,9 @@
-<template lang="pug">
+<template lang='pug'>
   #home
     section#intro
       .intro-inner
         .header
-          img(src="../assets/images/components/rainbowflag.svg")
+          img(src='../assets/images/components/rainbowflag.svg')
         .content
           .row.restrict
             .block
@@ -12,9 +12,9 @@
               p.
                 一個安全、舒適，能讓孩子與家長們真正放鬆的地方，一起動腦玩拼圖、疊積木，開心地推著嘎嘎作響的滑步車，讓每位來到這裡的朋友，見到孩子與自己發自內心的笑容，是我們時時提醒自己的初衷。
             .block
-              img(src="../assets/images/components/dino.svg")
+              img(src='../assets/images/components/dino.svg')
         .footer
-          img(src="../assets/images/components/rainbowflag-shadow.svg")
+          img(src='../assets/images/components/rainbowflag-shadow.svg')
 
     section#fun
       .row
@@ -61,10 +61,10 @@
               p.
                 「中中親子樂園」，盡可能地壓縮用餐空間，為小朋友提供大量的遊戲場所，不定期更新各類玩具、童書，讓小朋友快樂吃，開心玩，不再吵著要回家！
 
-    section#about(data-vide-bg="../assets/images/video/bg")
+    section#about(data-vide-bg='../assets/images/video/bg')
       .row.restrict
         .block
-          img(src="../assets/images/components/avatar.png")
+          img(src='../assets/images/components/avatar.png')
           //- h1 從頭開始
         .block
           .paragraph
@@ -93,7 +93,7 @@
         .restrict
           p.
             「中中親子樂園」只提供您最天然的食材，用最簡單的烹煮方法，讓您享用食材最原始的滋味。<br>在這裡，您只吃得到我們自己以及給孩子吃的食物，相信我們，一定比您更重視「食」的安全。
-        img(src="../assets/images/components/dish.png")
+        img(src='../assets/images/components/dish.png')
     section#reservation
       .reservation-inner.restrict-l
         header
@@ -119,59 +119,170 @@
               ol
                 li 如欲舉辦大型活動 ( 生日派對、社團聚餐等 )，請於活動 14 天前來電預約。 )
             .block 
-              img(src="../assets/images/components/dino-sketching.gif")
+              img(src='../assets/images/components/dino-sketching.gif')
     section#map
-    section#instafeed
+    section#instagram
       .row
-      .overlay
-        .inner
-          h1
-            a(href="https://www.instagram.com/middlemiddlekids") Follow us on Instagram <span>@middlemiddlekids</span>
+        #instafeed
+      //- .overlay
+      //-   .inner
+      //-     h1
+      //-       a(href='https://www.instagram.com/middlemiddlekids') Follow us on Instagram <span>@middlemiddlekids</span>
 </template>
 
 <script>
 // import request from 'superAgent'
 import Instafeed from 'instafeed.js'
+// Expose Jquery Globally.
+import $ from 'jquery'
+window.jQuery = window.$ = $
+require('imports?$=jquery!../assets/vendor/jquery.tinyMap.min.js')
 export default {
   mounted () {
+    // Map
+    $('#map').tinyMap({
+      'center': ['24.1770491', '120.7112015'],
+      'zoom': 16,
+      'scrollwheel': false,
+      'marker': [
+        {
+          'addr': ['24.1770491', '120.7112015'],
+          'text': '<h2 style=margin: 0; text-align: center;>中中親子樂園</h2><ul style=margin:0;padding:0;list-style-type: none;><li><b>地址：</b>台中市北屯區松竹五路 172 號</li><li><b>預約電話：</b>(04)2437-1266</li><li><b>營業時間：</b>10:00~20:00 ( 週一公休 )</li></ul>',
+          'newLabel': '中中親子樂園',
+          'newLabelCSS': 'labels',
+          // 自訂外部圖示
+          'icon': {
+            'url': 'static/map-pointer.png',
+            'scaledSize': [40, 48]
+          },
+          // 動畫效果
+          'animation': 'DROP'
+        }
+      ],
+      'styles': [
+        {
+          'featureType': 'administrative',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#444444'
+            }
+          ]
+        },
+        {
+          'featureType': 'administrative.country',
+          'elementType': 'geometry.fill',
+          'stylers': [
+            {
+              'visibility': 'on'
+            }
+          ]
+        },
+        {
+          'featureType': 'landscape',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'color': '#f2f2f2'
+            }
+          ]
+        },
+        {
+          'featureType': 'poi',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'visibility': 'off'
+            }
+          ]
+        },
+        {
+          'featureType': 'road',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'saturation': -100
+            },
+            {
+              'lightness': 45
+            }
+          ]
+        },
+        {
+          'featureType': 'road.highway',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'visibility': 'simplified'
+            }
+          ]
+        },
+        {
+          'featureType': 'road.arterial',
+          'elementType': 'labels.icon',
+          'stylers': [
+            {
+              'visibility': 'off'
+            }
+          ]
+        },
+        {
+          'featureType': 'transit',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'visibility': 'off'
+            }
+          ]
+        },
+        {
+          'featureType': 'water',
+          'elementType': 'all',
+          'stylers': [
+            {
+              'color': '#4694ec'
+            },
+            {
+              'visibility': 'on'
+            }
+          ]
+        }
+      ]
+    })
     var feed = new Instafeed({
       get: 'user',
       userId: '2230806826',
-      accessToken: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072'
+      accessToken: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072',
+      limit: 12
     })
     feed.run()
-    // request
-    // .get('https://api.instagram.com/v1/users/self/media/recent/')
-    // .query({access_token: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072'})
-    // .end(function (err, res) {
-    //   if (err || !res.ok) {
-    //     // alert('Oh no! error');
-    //     console.log(err)
-    //   } else {
-    //     // alert('yay got ' + JSON.stringify(res.body));
-    //     console.log(res.body)
-    //   }
-    // })
-    // request
-    // .get('https://api.instagram.com/oauth/authorize/')
-    // .query({ client_id: '1ef4bf16979c442a8674cb1b58f79bca' })
-    // .query({ redirect_uri: 'http://localhost:8080' })
-    // .query({ response_type: 'token' })
-    // .end(function (err, res) {
-    //   if (err || !res.ok) {
-    //     // alert('Oh no! error');
-    //     console.log(err)
-    //   } else {
-    //     // alert('yay got ' + JSON.stringify(res.body));
-    //     console.log(res.body)
-    //   }
-    // })
   },
   components: {
   }
 }
 </script>
 
-<style lang="scss">
-
+<style lang='scss'>
+//Susy + BreakPoint
+@import '../../bower_components/susy/sass/susy';
+@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+#instagram {
+  a {
+    display: block;
+    @include gallery(2 of 12 0);
+  }
+}
+.clr {
+  &:before, &:after {
+    content:'';
+    clear: both;
+    display: block;
+  }
+}
+#instafeed {
+  @extend .clr;
+  img {
+    width: 100%; 
+  }
+}
 </style>

@@ -13,7 +13,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "imports-loader": "^0.6.5",
     "instafeed.js": "^1.4.1",
+    "jquery": "^3.1.1",
     "node-sass": "^3.10.1",
     "pug": "^2.0.0-alpha6",
     "sass-loader": "^4.0.2",

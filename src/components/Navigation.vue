@@ -1,7 +1,7 @@
 <template lang="pug">
   nav#navigation
     a.sticky-brand(href="/#wrapper")
-      img(src="images/components/sticky-brand.svg")
+      //- img(src="images/components/sticky-brand.svg")
     ul
       li
         router-link(to="/#wrapper", activeClass="active")
