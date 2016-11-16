@@ -17,9 +17,11 @@ const scrollBehavior = (to, from, savedPosition) => {
     const position = {}
     // new navigation.
     // scroll to anchor by returning the selector
-    if (to.hash) {
-      position.selector = to.hash
-    }
+    // if (to.hash) {
+    //   console.log(position)
+    //   console.log(to.hash)
+    //   position.selector = to.hash
+    // }
     // check if any matched route config has meta that requires scrolling to top
     if (to.matched.some(m => m.meta.scrollToTop)) {
       // cords will be used if no selector is provided,
@@ -39,7 +41,7 @@ const router = new VueRouter({
   base: __dirname,
   scrollBehavior,
   routes: [
-    { path: '/', component: Home, meta: { scrollToTop: true } },
+    { path: '/', component: Home },
     { path: '/wall', component: Wall }
   ]
 })

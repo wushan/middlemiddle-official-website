@@ -4,35 +4,55 @@
       //- img(src="images/components/sticky-brand.svg")
     ul
       li
-        router-link(to="/#wrapper", activeClass="active")
+        //- a(href="javascript:;", @click="jumpTo('home')")
+        router-link(v-bind:to="{ path: '/', hash: 'home'}")
           span 首頁
           span HOME
       li
-        router-link(to="/#fun", activeClass="active")
+        //- a(href="javascript:;", @click="jumpTo('fun')")
+        router-link(v-bind:to="{ path: '/', hash: 'fun'}")
           span 遊戲
           span FUN
       li
-        router-link(to="/#foods", activeClass="active")
+        //- a(href="javascript:;", @click="jumpTo('foods')")
+        router-link(v-bind:to="{ path: '/', hash: 'foods'}")
           span 美食
           span FOODS
       li
-        router-link(to="/#reservation", activeClass="active")
+        //- a(href="javascript:;", @click="jumpTo('reservation')")
+        router-link(v-bind:to="{ path: '/', hash: 'reservation'}")
           span 預約規則
           span RESERVATION
       li
-        router-link(to="/#map", activeClass="active")
+        //- a(href="javascript:;", @click="jumpTo('map')")
+        router-link(v-bind:to="{ path: '/', hash: 'map'}")
           span 導航
           span LOCATION
       li
         router-link(to="/wall", activeClass="active")
-          span 照片牆
-          span PHOTOWALL
+          span 恐龍牆
+          span DINOWALL
     a.js-mobile-trigger.mobile-trigger.icons-mobile-btn.sb-toggle-left(href='javascript:;')
 </template>
 
 <script>
 export default {
   components: {
+  },
+  methods: {
+    jumpTo (to) {
+      // console.log(this.$route.path)
+      // if (this.$route.path === '/') {
+      //   jump('#' + to, {
+      //     duration: 1000,
+      //     offset: -72,
+      //     callback: undefined,
+      //     a11y: false
+      //   })
+      // } else {
+      //   this.$router.push('/')
+      // }
+    }
   }
 }
 </script>
@@ -76,6 +96,9 @@ nav {
   }
   //Nav in SlideBar
   &#navigation {
+    position: fixed;
+    top: 0;
+    width: 100%; 
     z-index: 999;
     background-color: $white;
     ul {

@@ -164,7 +164,6 @@
 		@extend .clr;
 		.block {
 			@extend .transition;
-			height: 400px;
 			// @include span(6 of 12 0);
 			background-size: cover;
 			background-repeat: no-repeat;

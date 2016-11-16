@@ -215,8 +215,6 @@ export default {
     @extend .clr;
     .block {
       @extend .transition;
-      height: 400px;
-      // @include span(6 of 12 0);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -231,23 +229,31 @@ export default {
         padding: 1em;
         position: absolute;
         top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
         text-align: center;
         color: $white;
+        display: flex;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         // background-color: rgba($black, .7);
       }
-      &:after {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        width: 0;
-        height: 100%;
-      }
-      .block-inner {;
+      // &:after {
+      //   content: '';
+      //   display: inline-block;
+      //   vertical-align: middle;
+      //   width: 0;
+      //   height: 100%;
+      // }
+      .block-inner {
         font-size: 1rem;
         display: inline-block;
         vertical-align: middle;
+        -webkit-align-self: center;
+        align-self: center;
       }
       .overlay {
         @extend .transition;

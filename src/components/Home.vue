@@ -1,5 +1,17 @@
-<template lang='pug'>
+<template lang="pug">
   #home
+    section#introslider
+      lory(v-bind:options="{ enableMouseEvents: true, infinite: 1 }")
+        item
+          img(src="../assets/images/slider/main-slide-1.jpg")
+        item
+          img(src="../assets/images/slider/main-slide-2.jpg")
+        item
+          img(src="../assets/images/slider/main-slide-3.jpg")
+        item
+          img(src="../assets/images/slider/main-slide-4.jpg")
+        prev(slot="actions")
+        next(slot="actions")
     section#intro
       .intro-inner
         .header
@@ -133,13 +145,49 @@
 <script>
 // import request from 'superAgent'
 import Instafeed from 'instafeed.js'
+import jump from 'jump.js'
+import { Lory, Item, Prev, Next } from 'vue-lory'
 // Expose Jquery Globally.
 import $ from 'jquery'
 window.jQuery = window.$ = $
 require('imports?$=jquery!../assets/vendor/jquery.tinyMap.min.js')
 export default {
+  name: 'Home',
+  watch: {
+    '$route': 'jumpTo'
+  },
+  methods: {
+    jumpTo () {
+      if (this.$route.hash) {
+        jump(this.$route.hash, {
+          duration: 1000,
+          offset: -72,
+          callback: undefined,
+          a11y: false
+        })
+      } else {
+        return
+      }
+    }
+  },
   mounted () {
+    if (this.$route.hash) {
+      jump(this.$route.hash, {
+        duration: 1000,
+        offset: -72,
+        callback: undefined,
+        a11y: false
+      })
+    } else {
+      return
+    }
     // Map
+    $.fn.tinyMapConfigure({
+      // Google Maps API Key，預設 null
+      'key': 'AIzaSyDB0dwhyV2kDxZeUMYBMDRud6_QCuz9tmg',
+      // 使用的地圖語言
+      'language': 'zh‐TW'
+    })
     $('#map').tinyMap({
       'center': ['24.1770491', '120.7112015'],
       'zoom': 16,
@@ -253,36 +301,41 @@ export default {
       get: 'user',
       userId: '2230806826',
       accessToken: '2230806826.1ef4bf1.623f1e10226d4895aa9df1ab0ea6d072',
-      limit: 12
+      limit: 12,
+      resolution: 'low_resolution'
     })
     feed.run()
   },
   components: {
+    Lory,
+    Item,
+    Prev,
+    Next
   }
 }
 </script>
 
 <style lang='scss'>
-//Susy + BreakPoint
-@import '../../bower_components/susy/sass/susy';
-@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
-#instagram {
-  a {
-    display: block;
-    @include gallery(2 of 12 0);
+  //Susy + BreakPoint
+  @import '../../bower_components/susy/sass/susy';
+  @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+  #instagram {
+    a {
+      display: block;
+      @include gallery(2 of 12 0);
+    }
   }
-}
-.clr {
-  &:before, &:after {
-    content:'';
-    clear: both;
-    display: block;
+  .clr {
+    &:before, &:after {
+      content:'';
+      clear: both;
+      display: block;
+    }
   }
-}
-#instafeed {
-  @extend .clr;
-  img {
-    width: 100%; 
+  #instafeed {
+    @extend .clr;
+    img {
+      width: 100%; 
+    }
   }
-}
 </style>
