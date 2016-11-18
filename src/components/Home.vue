@@ -80,7 +80,7 @@
               p.
                 「中中親子樂園」，盡可能地壓縮用餐空間，為小朋友提供大量的遊戲場所，不定期更新各類玩具、童書，讓小朋友快樂吃，開心玩，不再吵著要回家！
 
-    section#about(data-vide-bg='../assets/images/video/bg')
+    section#about(data-vide-bg='/static/video/bg')
       .row.restrict
         .block
           img(src='../assets/images/components/avatar.png')
@@ -158,6 +158,7 @@ import {lory} from 'lory.js'
 import $ from 'jquery'
 window.jQuery = window.$ = $
 require('imports?$=jquery!../assets/vendor/jquery.tinyMap.min.js')
+require('imports?$=jquery!../assets/vendor/jquery.vide.min.js')
 export default {
   name: 'Home',
   watch: {
@@ -197,8 +198,6 @@ export default {
         callback: undefined,
         a11y: false
       })
-    } else {
-      return
     }
     // Map
     $.fn.tinyMapConfigure({
@@ -207,6 +206,7 @@ export default {
       // 使用的地圖語言
       'language': 'zh‐TW'
     })
+    console.log('ee')
     $('#map').tinyMap({
       'center': ['24.1770491', '120.7112015'],
       'zoom': 16,
@@ -334,6 +334,146 @@ export default {
   //Susy + BreakPoint
   @import '../../bower_components/susy/sass/susy';
   @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+  @import "../assets/styles/lib/var/_var";
+  @import "../assets/styles/lib/base";
+  #foods {
+    background-image: url('../assets/images/components/food-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    // height: 80vh;
+    box-sizing: border-box;
+    padding: 4em 0;
+    img {
+      margin-bottom: -9em;
+    }
+    header {
+      color: $white;
+      h1 {
+        text-align: center;
+        font-weight: 500;
+        small {
+          font-size: .7em;
+          display: block;
+          font-weight: 100;
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .main {
+      text-align: center;
+      color: $white;
+    }
+  }
+
+  #reservation {
+    padding: 4em 0;
+    span {
+      font-weight: 600;
+    }
+    header {
+      text-align: center;
+      .phone-number {
+        font-size: 3em;
+        font-weight: 100;
+        line-height: 1;
+      }
+    }
+    .main {
+      text-align: center;
+      ol {
+        padding: 0;
+        // list-style-position: inside;
+        margin-left: 1em;
+      }
+      .open-hour {
+        font-size: 110%;
+      }
+      .row {
+        margin-top: 2em;
+        padding-top: 2em;
+        border-top: 1px solid $lightgray;
+        text-align: left;
+        .block {
+          // @include gallery(4 of 12 1);
+        }
+      }
+    }
+  }
+  #doc {
+    background-color: $black;
+    position: relative;
+    header {
+      h1 {
+        color: $white;
+        text-align: center;
+        font-style: italic;
+        font-size: 3em;
+        font-weight: 100;
+        word-break: break-word;
+        small {
+          display: block;
+          font-size: .4em;
+          font-style: normal;
+        }
+      }
+    }
+  }
+  #instagram {
+    position: relative;
+    .block {
+      @include gallery(2 of 10 0);
+      img {
+        width: 100%;
+        @extend .transition;
+        filter: sepia(.5) grayscale(.7) brightness(.2);
+        // filter: brightness(50%);
+      }
+      &:hover {
+        img {
+          filter: sepia(0) grayscale(0) brightness(1);
+        }
+      }
+    }
+    .overlay {
+      // background-color: rgba($black, .7);
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      font-size: 0;
+      text-align: center;
+      &:before {
+        content: '';
+        width: 0;
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .inner {
+        font-size: 1rem;
+        display: inline-block;
+        vertical-align: middle;
+        
+      }
+      h1 {
+        // font-size: 4em;
+        font-weight: 100;
+        font-style: italic;
+        text-align: center;
+        a {
+          color: $white;
+        }
+      }
+      span {
+        display: block;
+      }
+    }
+  }
   #instagram {
     a {
       display: block;
