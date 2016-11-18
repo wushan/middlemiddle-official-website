@@ -4,10 +4,10 @@
       .slider.js_slider
         .frame.js_frame
           ul.slides.js_slides
-            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-1.jpg')")
-            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-2.jpg')")
-            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-3.jpg')")
-            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-4.jpg')")
+            li.js_slide(style="background-image: url('/static/img/main-slide-1.jpg')")
+            li.js_slide(style="background-image: url('/static/img/main-slide-2.jpg')")
+            li.js_slide(style="background-image: url('/static/img/main-slide-3.jpg')")
+            li.js_slide(style="background-image: url('/static/img/main-slide-4.jpg')")
         span.js_prev.prev
           svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
             g
