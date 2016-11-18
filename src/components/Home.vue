@@ -1,17 +1,24 @@
 <template lang="pug">
   #home
     section#introslider
-      lory(v-bind:options="{ enableMouseEvents: true, infinite: 1 }")
-        item
-          img(src="../assets/images/slider/main-slide-1.jpg")
-        item
-          img(src="../assets/images/slider/main-slide-2.jpg")
-        item
-          img(src="../assets/images/slider/main-slide-3.jpg")
-        item
-          img(src="../assets/images/slider/main-slide-4.jpg")
-        prev(slot="actions")
-        next(slot="actions")
+      .slider.js_slider
+        .frame.js_frame
+          ul.slides.js_slides
+            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-1.jpg')")
+            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-2.jpg')")
+            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-3.jpg')")
+            li.js_slide(style="background-image: url('/static/assets/images/slider/main-slide-4.jpg')")
+        span.js_prev.prev
+          svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
+            g
+              path(fill="#2E435A", d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z")
+
+        span.js_next.next
+          svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
+            g
+              path(fill="#2E435A", d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z")
+        //- prev(slot="actions")
+        //- next(slot="actions")
     section#intro
       .intro-inner
         .header
@@ -146,7 +153,7 @@
 // import request from 'superAgent'
 import Instafeed from 'instafeed.js'
 import jump from 'jump.js'
-import { Lory, Item, Prev, Next } from 'vue-lory'
+import {lory} from 'lory.js'
 // Expose Jquery Globally.
 import $ from 'jquery'
 window.jQuery = window.$ = $
@@ -171,6 +178,18 @@ export default {
     }
   },
   mounted () {
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const slider = document.querySelector('.js_slider');
+
+    //     lory(slider, {
+    //         // options going here
+    //     });
+    // });
+    const slider = document.querySelector('.js_slider')
+    lory(slider, {
+      // options going here
+      infinite: 1
+    })
     if (this.$route.hash) {
       jump(this.$route.hash, {
         duration: 1000,
@@ -307,10 +326,6 @@ export default {
     feed.run()
   },
   components: {
-    Lory,
-    Item,
-    Prev,
-    Next
   }
 }
 </script>
@@ -337,5 +352,63 @@ export default {
     img {
       width: 100%; 
     }
+  }
+  .slider, .frame, .slides, .js_slide {
+    height: 100%;
+  }
+  .js_slide {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /**
+   * (optional) define here the style definitions which should be applied on the slider container
+   * e.g. width including further controls like arrows etc.
+   */
+  .slider {}
+
+  .frame {
+
+      position: relative;
+      font-size: 0;
+      line-height: 0;
+      overflow: hidden;
+      white-space: nowrap;
+  }
+
+  .slides {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      li {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        /**
+         * (optional) if the content inside the slide element has a defined size.
+         */
+      }
+  }
+
+  
+  
+  .prev, .next {
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      display: block;
+      cursor: pointer;
+  }
+
+  .next {
+      right: 2em;
+  }
+
+  .prev {
+      left: 2em;
+  }
+
+  .next svg, .prev svg {
+      width: 25px;
   }
 </style>

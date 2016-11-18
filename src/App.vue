@@ -52,105 +52,6 @@ export default {
 #introslider {
   height: 80vh;
   position: relative;
-  .bx-wrapper {
-    height: 100%;
-  }
-  .bx-viewport {
-    height: 100%;
-  }
-  .intro-slider {
-    height: 100%;
-    .slick-list, .slick-track {
-      height: 100%;
-    }
-    .item {
-      height: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      font-size: 0;
-      position: relative;
-      text-align: center;
-      &:before {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
-        width: 0;
-      }
-    }
-    .caption {
-      // display: none;
-      font-family: $brandon;
-      // position: absolute;
-      // top: 0;
-      // bottom: 0;
-      // margin: auto;
-      display: inline-block;
-      vertical-align: middle;
-      // width: 100%;
-      color: $white;
-      text-align: center;
-      font-size: 1.6rem;
-      line-height: 1.3;
-      h1 {
-        font-weight: 100;
-        font-style: italic;
-        span {
-          font-weight: 600;
-        }
-      }
-      p {
-        font-size: .7em;
-      }
-    }
-  }
-  //overlay
-  .overlay-layer {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    #brand {
-      position: absolute;
-      left: 0;
-      padding: 1em;
-      img {
-        width: 100%;
-      }
-      a {
-        display: block;
-      }
-      .caption {
-        border-top: 1px solid $white;
-        padding-top: .5em;
-        margin-top: 1em;
-        font-size: .8em;
-        font-weight: 100;
-        color: $white;
-        p {
-          margin: 0;
-          // word-break: break-word;
-        }
-      }
-    }
-    .sharebar {
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      bottom: 4em;
-      left: 1em;
-      z-index: 9999;
-      li {
-        display: inline-block;
-        vertical-align: middle;
-        a {
-          display: block;
-        }
-      }
-    }
-  }
 }
 
 #intro {
@@ -540,44 +441,6 @@ export default {
   }
 }
 @include susy-breakpoint(768px, 12) {
-  #introslider {
-    .overlay-layer {
-      #brand {
-        a {
-          display: block;
-        }
-        .caption {
-          border-top: 1px solid $white;
-          padding-top: .5em;
-          margin-top: 1em;
-          font-size: .8em;
-          font-weight: 100;
-          color: $white;
-          // word-break: break-word;
-          width: 174px;
-          p {
-            margin: 0;
-            // word-break: break-word;
-          }
-        }
-      }
-      .sharebar {
-        left: 0;
-        right: 0;
-        text-align: right;
-        padding: 0 2em;
-        // margin: 0;
-        // padding: 0;
-        // position: absolute;
-        // top: 4em;
-        // right: .7em;
-        // z-index: 9999;
-        // li {
-        //  display: block;
-        // }
-      }
-    }
-  }
   #fun {
     .col {
       &:nth-child(2n) {
@@ -679,29 +542,9 @@ export default {
   
 }
 @include susy-breakpoint(1366px, 12) {
-  #introslider {
-    .overlay-layer {
-      #brand {
-        img {
-          width: auto;
-          height: 100%;
-        }
-        a {
-          height: 100%;
-        }
-      }
-    }
-  }
 }
 
 @include susy-breakpoint(1440px, 12) {
-  #introslider {
-    .overlay-layer {
-      #brand {
-        img {}
-      }
-    }
-  }
   #intro {
     .intro-inner {
       .header, .footer {
