@@ -68,7 +68,7 @@ window.fbAsyncInit = function() {
   FB.init({
     appId      : '1671181963161506',
     xfbml      : true,
-    version    : 'v2.5'
+    version    : 'v2.7'
   });
 };
 
@@ -76,6 +76,6 @@ window.fbAsyncInit = function() {
    var js, fjs = d.getElementsByTagName(s)[0];
    if (d.getElementById(id)) {return;}
    js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
+   js.src = "//connect.facebook.net/en_US/sdk/debug.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
