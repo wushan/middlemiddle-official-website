@@ -4,7 +4,14 @@
       .slider.js_slider
         .frame.js_frame
           ul.slides.js_slides
-            li.js_slide(v-for="slide in slider", :style="'background-image: url(' + slide.url  + ')'")
+            li.js_slide
+              img(src="../assets/images/slider/main-slide-1.jpg")
+            li.js_slide
+              img(src="../assets/images/slider/main-slide-2.jpg")
+            li.js_slide
+              img(src="../assets/images/slider/main-slide-3.jpg")
+            li.js_slide
+              img(src="../assets/images/slider/main-slide-4.jpg")
         span.js_prev.prev
           svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
             g
@@ -158,24 +165,6 @@ require('imports?$=jquery!../assets/vendor/jquery.tinyMap.min.js')
 require('imports?$=jquery!../assets/vendor/jquery.vide.min.js')
 export default {
   name: 'Home',
-  data () {
-    return {
-      slider: [
-        {
-          url: '/static/img/main-slide-1.jpg'
-        },
-        {
-          url: '/static/img/main-slide-2.jpg'
-        },
-        {
-          url: '/static/img/main-slide-3.jpg'
-        },
-        {
-          url: '/static/img/main-slide-4.jpg'
-        }
-      ]
-    }
-  },
   watch: {
     '$route': 'jumpTo'
   },
@@ -514,6 +503,9 @@ export default {
   .js_slide {
     background-repeat: no-repeat;
     background-size: cover;
+    img {
+      width: 100%;
+    }
   }
   /**
    * (optional) define here the style definitions which should be applied on the slider container

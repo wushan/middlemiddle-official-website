@@ -50,7 +50,6 @@ export default {
 }
 @import "src/assets/styles/main.scss";
 #introslider {
-  height: 80vh;
   position: relative;
 }
 
