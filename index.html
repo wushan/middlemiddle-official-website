@@ -18,6 +18,7 @@
   <body>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
+          FB._https = (window.location.protocol == "https:");
           FB.init({
             appId      : '1671181963161506',
             xfbml      : true,
