@@ -23,6 +23,7 @@
               path(fill="#2E435A", d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z")
         //- prev(slot="actions")
         //- next(slot="actions")
+    news
     section#intro
       .intro-inner
         .header
@@ -155,6 +156,7 @@
 
 <script>
 // import request from 'superAgent'
+import News from './News'
 import Instafeed from 'instafeed.js'
 import jump from 'jump.js'
 import {lory} from 'lory.js'
@@ -330,6 +332,7 @@ export default {
     feed.run()
   },
   components: {
+    News
   }
 }
 </script>
