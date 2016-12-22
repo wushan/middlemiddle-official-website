@@ -1,14 +1,23 @@
 <template lang="pug">
-  #adminHome
-    .admin-container
-      sidebar
-      .main
-        transition(name="fade", mode="out-in")
-          router-view
+  form(@submit.prevent.stop="addNews")
+    .contorlgroup
+      label 文章標題
+      .controls
+        input(type="text", name="title")
+    .controlgroup
+      label File
+      .controls
+        input(type="file", name="thumbnail")
+    .contorlgroup
+      label 文章
+      .controls
+        //- textarea(name="content")
+        .textarea-wrapper
+          quill-editor(ref="myTextEditor", v-model="content", :config="editorOption", @blur="onEditorBlur($event)", @focus="onEditorFocus($event)", @ready="onEditorReady($event)")
+    .call-action
+      button.btn.basic.full(type="submit") Submit
 </template>
-
 <script>
-import Sidebar from './Sidebar'
 import { quillEditor } from 'vue-quill-editor'
 import firebase from 'firebase'
 var db = firebase.database()
@@ -16,11 +25,10 @@ var db = firebase.database()
 var storageRef = firebase.storage().ref()
 import uuid from 'uuid'
 export default {
-  name: 'Home',
+  name: 'addNews',
   props: ['validuser'],
   components: {
-    quillEditor,
-    Sidebar
+    quillEditor
   },
   mounted () {
     // if (this.validuser) {
@@ -68,11 +76,12 @@ export default {
         instance.$firebaseRefs.news.push({
           thumbnail: downloadURL,
           title: e.target.elements.title.value,
-          content: instance.content
+          content: instance.content,
+          time: firebase.database.ServerValue.TIMESTAMP
+        }).then((res) => {
+          instance.$router.push('list')
         })
       })
-
-      console.log(this.$firebaseRefs.anArray)
     },
     onEditorBlur (editor) {
       console.log('editor blur!', editor)
@@ -96,15 +105,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.admin-container {
-  display: flex;
-  #sidebar {
-    flex: initial;
-    min-width: 150px;
-  }
-  .main {
-    flex: 1;
-    padding: 0 2em;
-  }
-}
 </style>

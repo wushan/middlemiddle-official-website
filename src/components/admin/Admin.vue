@@ -2,8 +2,8 @@
   #login
     .restrict-l
       h1 Admin Panel
-      router-view(v-bind:validuser="validuser")
-        p X
+      transition(name="fade", mode="out-in")
+        router-view(v-bind:validuser="validuser")
 </template>
 
 <script>

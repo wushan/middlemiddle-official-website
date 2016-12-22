@@ -23,11 +23,10 @@ export default {
   name: 'login',
   props: ['validuser'],
   mounted () {
+    console.log(this.validuser)
   },
-  updated () {
-    if (this.validuser) {
-      this.$router.push('/admin/home')
-    }
+  watch: {
+    'validuser': 'redirect'
   },
   data () {
     return {
@@ -35,6 +34,12 @@ export default {
     }
   },
   methods: {
+    redirect () {
+      console.log(this.validuser)
+      if (this.validuser) {
+        this.$router.push('/admin/home')
+      }
+    },
     signin (e) {
       var account = e.target.elements.account.value
       console.log(account)

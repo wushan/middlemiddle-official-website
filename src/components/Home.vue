@@ -1,6 +1,5 @@
 <template lang="pug">
   main
-    navigation
     #home
       section#introslider
         .slider.js_slider
@@ -158,7 +157,6 @@
 
 <script>
 // import request from 'superAgent'
-import Navigation from './Navigation'
 import News from './News'
 import Instafeed from 'instafeed.js'
 import jump from 'jump.js'
@@ -335,16 +333,14 @@ export default {
     feed.run()
   },
   components: {
-    News,
-    Navigation
+    News
   }
 }
 </script>
 
 <style lang='scss'>
-  //Susy + BreakPoint
-  @import '../../bower_components/susy/sass/susy';
-  @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+  @import "../../bower_components/susy/sass/susy";
+  @import "../../bower_components/breakpoint-sass/stylesheets/breakpoint";
   @import "../assets/styles/lib/var/_var";
   @import "../assets/styles/lib/base";
   #foods {

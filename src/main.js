@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueFire from 'vuefire'
+// import VueQuillEditor from 'vue-quill-editor'
 // explicit installation required in module environments
+// Vue.use(VueQuillEditor)
 Vue.use(VueFire)
 Vue.use(VueRouter)
 
@@ -36,22 +38,51 @@ const scrollBehavior = (to, from, savedPosition) => {
     return position
   }
 }
+// FrontEnd
+import Container from './components/Container'
+import NewsWrapper from './components/NewsWrapper'
+import NewsSingle from './components/NewsSingle'
+// Admin
 import Admin from './components/admin/Admin'
 import Adminhome from './components/admin/Home'
 import Login from './components/admin/Login'
+import NewsAdmin from './components/admin/NewsAdmin'
+import NewsList from './components/admin/NewsList'
+import AddNews from './components/admin/addNews'
+import ModifyNews from './components/admin/modifyNews'
 /* eslint-disable*/
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   scrollBehavior,
   routes: [
-    { path: '/', component: Home },
-    { path: '/wall', component: Wall },
+    { path: '/', component: Container, children: 
+      [
+        { path: '', component: Home },
+        { path: 'news', component: NewsWrapper, children: 
+          [
+            { path: 'single/:id', component: NewsSingle }
+          ]
+        },
+        { path: 'wall', component: Wall },
+      ]
+    },
     { path: '/admin', component: Admin, children:
       [
         { path: '', component: Login },
         { path: 'login', component: Login },
-        { path: 'home', component: Adminhome }
+        { path: 'home', component: Adminhome, children: 
+          [
+            { path: 'news', component: NewsAdmin, children:
+              [
+                { path: '', component: NewsList },
+                { path: 'list', component: NewsList },
+                { path: 'add', component: AddNews },
+                { path: 'modify/:id', component: ModifyNews }
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
