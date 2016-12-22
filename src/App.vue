@@ -1,6 +1,5 @@
 <template lang="pug">
   #wrapper
-    navigation
     transition(name="fade", mode="out-in")
       router-view
     footer
@@ -22,10 +21,8 @@
 </template>
 
 <script>
-import Navigation from './components/Navigation'
 export default {
   components: {
-    Navigation
   },
   mounted () {
   },

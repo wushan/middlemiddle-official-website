@@ -36,7 +36,9 @@ const scrollBehavior = (to, from, savedPosition) => {
     return position
   }
 }
-
+import Admin from './components/admin/Admin'
+import Adminhome from './components/admin/Home'
+import Login from './components/admin/Login'
 /* eslint-disable*/
 const router = new VueRouter({
   mode: 'history',
@@ -44,7 +46,14 @@ const router = new VueRouter({
   scrollBehavior,
   routes: [
     { path: '/', component: Home },
-    { path: '/wall', component: Wall }
+    { path: '/wall', component: Wall },
+    { path: '/admin', component: Admin, children:
+      [
+        { path: '', component: Login },
+        { path: 'login', component: Login },
+        { path: 'home', component: Adminhome }
+      ]
+    }
   ]
 })
 

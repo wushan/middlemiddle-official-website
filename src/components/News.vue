@@ -12,8 +12,11 @@
 <script>
 import firebase from 'firebase'
 var firebaseApp = firebase.initializeApp({
-  databaseURL: 'https://my-dino-f5e4a.firebaseio.com', // Realtime Database
-  storageBucket: 'gs://my-dino-f5e4a.appspot.com'          // Storage
+  apiKey: 'AIzaSyCP0tdpg-QON43J_b_2cVgzGDZI_n9EBPE',
+  authDomain: 'my-dino-f5e4a.firebaseapp.com',
+  databaseURL: 'https://my-dino-f5e4a.firebaseio.com',
+  storageBucket: 'my-dino-f5e4a.appspot.com',
+  messagingSenderId: '96281735753'
 })
 var db = firebaseApp.database()
 export default {
