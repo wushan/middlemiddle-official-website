@@ -10,17 +10,17 @@
           span HOME
       li
         //- a(href="javascript:;", @click="jumpTo('fun')")
-        router-link(v-bind:to="{ path: '/', hash: 'fun'}")
+        router-link(v-bind:to="{ path: '/fun'}")
           span 遊戲
           span FUN
       li
         //- a(href="javascript:;", @click="jumpTo('foods')")
-        router-link(v-bind:to="{ path: '/', hash: 'foods'}")
+        router-link(v-bind:to="{ path: '/foods'}")
           span 美食
           span FOODS
       li
         //- a(href="javascript:;", @click="jumpTo('reservation')")
-        router-link(v-bind:to="{ path: '/', hash: 'reservation'}")
+        router-link(v-bind:to="{ path: '/reservation'}")
           span 預約規則
           span RESERVATION
       li

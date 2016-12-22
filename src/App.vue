@@ -76,91 +76,6 @@ export default {
   }
 }
 
-#fun {
-  text-align: center;
-  h2 {
-    font-weight: 100;
-    margin: 0;
-    span {
-      color: $gray;
-      display: block;
-      font-size: .5em;
-      font-style: italic;
-      font-weight: 600;
-    }
-  }
-  img {
-    width: 100%;
-  }
-  .col {
-    position: relative;
-    @extend .clr;
-    .block {
-      @extend .transition;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      font-size: 0;
-      position: relative;
-      overflow: hidden;
-      p {
-        display: none;
-      }
-      &:last-child {
-        box-sizing: border-box;
-        padding: 1em;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        color: $white;
-        display: flex;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        // background-color: rgba($black, .7);
-      }
-      // &:after {
-      //   content: '';
-      //   display: inline-block;
-      //   vertical-align: middle;
-      //   width: 0;
-      //   height: 100%;
-      // }
-      .block-inner {
-        font-size: 1rem;
-        display: inline-block;
-        vertical-align: middle;
-        -webkit-align-self: center;
-        align-self: center;
-      }
-      .overlay {
-        @extend .transition;
-        background-color: rgba($black, .7);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-    }
-    &:hover {
-      .block {
-        // background-color: $smokygray;
-        &:last-child {
-          // background-color: $smokygray;
-        }
-        .overlay {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-}
-
 #footer {
   background-color: $smokygray;
   .additional {
@@ -285,32 +200,6 @@ export default {
   }
 }
 @include susy-breakpoint(768px, 12) {
-  #fun {
-    .col {
-      &:nth-child(2n) {
-        .block {
-          &:first-child {
-            @include last;
-          }
-        }
-      }
-      .block {
-        @include span(6 of 12 0);
-        box-sizing: border-box;
-        padding: 1em 2em;
-        p {
-          display: block;
-        }
-        &:last-child {
-          position: static;
-          background-color: $white;
-          color: $black;
-          box-sizing: border-box;
-          padding: 30px;
-        }
-      }
-    }
-  }
   #reservation {
     .main {
       .block {
@@ -365,25 +254,6 @@ export default {
       }
     }
   }
-  #fun {
-    .col {
-      @include gallery(3 of 12 0);
-      &:nth-child(2n) {
-        .block {
-          &:first-child {
-            float: none;
-          }
-        }
-      }
-      .block {
-        @include full;
-        .block-inner {
-          display: block;
-        }
-      }
-    }
-  }
-  
 }
 @include susy-breakpoint(1366px, 12) {
 }

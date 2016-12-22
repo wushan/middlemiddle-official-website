@@ -4,11 +4,11 @@
       ul
         li(v-for="news in newsList", :key="news['.key']")
           .thumbnail
-            router-link(:to="'/news/single/' + news['.key']")
+            router-link(v-bind:to="'/news/single/' + news['.key']")
               img(v-bind:src="news.thumbnail")
           .news-content
             h4.title
-              router-link(:to="'/news/single/' + news['.key']") {{news.title}}
+              router-link(v-bind:to="'/news/single/' + news['.key']") {{news.title}}
             .date(v-timetag="news.time")
             .content(v-html="news.content")
 </template>
@@ -58,6 +58,13 @@ export default {
 @import "../assets/styles/lib/base";
 #newsCard {
   background-color: $white;
+  min-height: 1383px;
+  @include breakpoint(768px) {
+    min-height: 777px;
+  }
+  @include breakpoint(1024px) {
+    min-height: 900px;
+  }
   ul {
     display: block;
     padding: 1em;
@@ -98,7 +105,9 @@ export default {
     }
   }
   .title {
-    color: $black;
+    a {
+      color: $black;
+    }
   }
   .content {
     color: $darkgray;

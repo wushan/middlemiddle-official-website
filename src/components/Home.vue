@@ -41,51 +41,7 @@
           .footer
             img(src='../assets/images/components/rainbowflag-shadow.svg')
 
-      section#fun
-        .row
-          .col
-            .block
-              img(src='../assets/images/components/fun-block-1.png')
-              .overlay
-            .block
-              .block-inner
-                h2.
-                  溜滑梯<span>Super Slide</span>
-                p.
-                  「中中親子樂園」引進義大利進口筒狀螺旋溜滑梯，3.5 公尺超高設計，溜下時能體驗宛如自由落體般的速度快感，讓孩子們對於他們最愛的溜滑梯有全新感受。
-            
-          .col
-            .block
-              img(src='../assets/images/components/fun-block-2.png')
-              .overlay
-            .block
-              .block-inner
-                h2.
-                  木製玩具<span>Mentari Plaza</span>
-                p.
-                  中中親子樂園採用在木頭玩具領域耕耘超過 20 年，產品符合 SGS 國際認證的玩具品牌 Mentari ，木質玩具豐富的觸感與益智功能，讓您的小朋友能夠安安心心的玩玩具！*本店提供 Mentari 木製玩具代購，若在店內看到喜歡的木頭玩具也可以詢問店員！
-          .col
-            .block
-              img(src='../assets/images/components/fun-block-3.png')
-              .overlay
-            .block
-              .block-inner
-                h2.
-                  寶寶專屬<span>Baby fun</span>
-                p.
-                  「中中親子樂園」特別為小小寶貝開闢專屬的遊戲專區，藉由特別訂製的軟墊與圍欄，不只讓寶寶玩得開心，爸爸媽媽也不用再擔心小寶貝撞來撞去發生危險！
-
-          .col
-            .block
-              img(src='../assets/images/components/fun-block-4.png')
-              .overlay
-            .block
-              .block-inner
-                h2.
-                  超大空間<span>Playground</span>
-                p.
-                  「中中親子樂園」，盡可能地壓縮用餐空間，為小朋友提供大量的遊戲場所，不定期更新各類玩具、童書，讓小朋友快樂吃，開心玩，不再吵著要回家！
-
+      fun
       section#about(data-vide-bg='/static/video/bg')
         .row.restrict
           .block
@@ -123,7 +79,7 @@
         .reservation-inner.restrict-l
           header
             h3 立即預約
-            .phone-number (04)2437-1266
+            a.phone-number(href="tel:+886424371266", itemprop="telephone") (04)2437-1266
           .main
             h6 營業時間與相關規則請見下方說明
             .open-hour <span>營業時間</span>：早上 10:00 - 晚上 20:00 ( 每週一公休 )
@@ -158,6 +114,7 @@
 <script>
 // import request from 'superAgent'
 import News from './News'
+import Fun from './Fun'
 import Instafeed from 'instafeed.js'
 import jump from 'jump.js'
 import {lory} from 'lory.js'
@@ -172,6 +129,21 @@ export default {
     '$route': 'jumpTo'
   },
   methods: {
+    adjustPosition (dom) {
+      var target = document.getElementById(dom)
+      // var targetId = '#' + dom
+      if (target.offsetTop - window.scrollY > 74) {
+        console.log('repeating')
+        jump('#' + dom, {
+          duration: 1000,
+          offset: -72,
+          callback: () => this.adjustPosition('fun'),
+          a11y: false
+        })
+      } else {
+        console.log('passed')
+      }
+    },
     jumpTo () {
       if (this.$route.hash) {
         jump(this.$route.hash, {
@@ -198,6 +170,16 @@ export default {
       // options going here
       infinite: 1
     })
+    // jump according to route match
+    if (this.$route.path === '/fun') {
+      console.log('matched')
+      jump('#fun', {
+        duration: 1000,
+        offset: -72,
+        callback: () => this.adjustPosition('fun'),
+        a11y: false
+      })
+    }
     if (this.$route.hash) {
       jump(this.$route.hash, {
         duration: 1000,
@@ -333,232 +315,235 @@ export default {
     feed.run()
   },
   components: {
-    News
+    News,
+    Fun
   }
 }
 </script>
 
 <style lang='scss'>
-  @import "../../bower_components/susy/sass/susy";
-  @import "../../bower_components/breakpoint-sass/stylesheets/breakpoint";
-  @import "../assets/styles/lib/var/_var";
-  @import "../assets/styles/lib/base";
-  #foods {
-    background-image: url('../assets/images/components/food-bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    // height: 80vh;
-    box-sizing: border-box;
-    padding: 4em 0;
-    img {
-      margin-bottom: -9em;
-    }
-    header {
-      color: $white;
-      h1 {
-        text-align: center;
-        font-weight: 500;
-        small {
-          font-size: .7em;
-          display: block;
-          font-weight: 100;
-          span {
-            font-weight: 600;
-          }
-        }
-      }
-    }
-    .main {
-      text-align: center;
-      color: $white;
-    }
+@import "../../bower_components/susy/sass/susy";
+@import "../../bower_components/breakpoint-sass/stylesheets/breakpoint";
+@import "../assets/styles/lib/var/_var";
+@import "../assets/styles/lib/base";
+#foods {
+  background-image: url('../assets/images/components/food-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  // height: 80vh;
+  box-sizing: border-box;
+  padding: 4em 0;
+  img {
+    margin-bottom: -9em;
   }
-
-  #reservation {
-    padding: 4em 0;
-    span {
-      font-weight: 600;
-    }
-    header {
+  header {
+    color: $white;
+    h1 {
       text-align: center;
-      .phone-number {
-        font-size: 3em;
-        font-weight: 100;
-        line-height: 1;
-      }
-    }
-    .main {
-      text-align: center;
-      ol {
-        padding: 0;
-        // list-style-position: inside;
-        margin-left: 1em;
-      }
-      .open-hour {
-        font-size: 110%;
-      }
-      .row {
-        margin-top: 2em;
-        padding-top: 2em;
-        border-top: 1px solid $lightgray;
-        text-align: left;
-        .block {
-          // @include gallery(4 of 12 1);
-        }
-      }
-    }
-  }
-  #doc {
-    background-color: $black;
-    position: relative;
-    header {
-      h1 {
-        color: $white;
-        text-align: center;
-        font-style: italic;
-        font-size: 3em;
-        font-weight: 100;
-        word-break: break-word;
-        small {
-          display: block;
-          font-size: .4em;
-          font-style: normal;
-        }
-      }
-    }
-  }
-  #instagram {
-    position: relative;
-    .block {
-      @include gallery(2 of 10 0);
-      img {
-        width: 100%;
-        @extend .transition;
-        filter: sepia(.5) grayscale(.7) brightness(.2);
-        // filter: brightness(50%);
-      }
-      &:hover {
-        img {
-          filter: sepia(0) grayscale(0) brightness(1);
-        }
-      }
-    }
-    .overlay {
-      // background-color: rgba($black, .7);
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      margin: auto;
-      font-size: 0;
-      text-align: center;
-      &:before {
-        content: '';
-        width: 0;
-        height: 100%;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      .inner {
-        font-size: 1rem;
-        display: inline-block;
-        vertical-align: middle;
-        
-      }
-      h1 {
-        // font-size: 4em;
-        font-weight: 100;
-        font-style: italic;
-        text-align: center;
-        a {
-          color: $white;
-        }
-      }
-      span {
+      font-weight: 500;
+      small {
+        font-size: .7em;
         display: block;
+        font-weight: 100;
+        span {
+          font-weight: 600;
+        }
       }
     }
   }
-  #instagram {
-    a {
+  .main {
+    text-align: center;
+    color: $white;
+  }
+}
+
+#reservation {
+  padding: 4em 0;
+  span {
+    font-weight: 600;
+  }
+  header {
+    text-align: center;
+    .phone-number {
+      color: $main;
       display: block;
-      @include gallery(2 of 12 0);
+      font-size: 3em;
+      font-weight: 100;
+      line-height: 1;
     }
   }
-  .clr {
-    &:before, &:after {
-      content:'';
-      clear: both;
-      display: block;
+  .main {
+    text-align: center;
+    ol {
+      padding: 0;
+      // list-style-position: inside;
+      margin-left: 1em;
+    }
+    .open-hour {
+      font-size: 110%;
+    }
+    .row {
+      margin-top: 2em;
+      padding-top: 2em;
+      border-top: 1px solid $lightgray;
+      text-align: left;
+      .block {
+        // @include gallery(4 of 12 1);
+      }
     }
   }
-  #instafeed {
-    @extend .clr;
-    img {
-      width: 100%; 
+}
+#doc {
+  background-color: $black;
+  position: relative;
+  header {
+    h1 {
+      color: $white;
+      text-align: center;
+      font-style: italic;
+      font-size: 3em;
+      font-weight: 100;
+      word-break: break-word;
+      small {
+        display: block;
+        font-size: .4em;
+        font-style: normal;
+      }
     }
   }
-  .slider, .frame, .slides, .js_slide {
-    height: 100%;
-  }
-  .js_slide {
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+#instagram {
+  position: relative;
+  .block {
+    @include gallery(2 of 10 0);
     img {
       width: 100%;
+      @extend .transition;
+      filter: sepia(.5) grayscale(.7) brightness(.2);
+      // filter: brightness(50%);
+    }
+    &:hover {
+      img {
+        filter: sepia(0) grayscale(0) brightness(1);
+      }
     }
   }
-  /**
-   * (optional) define here the style definitions which should be applied on the slider container
-   * e.g. width including further controls like arrows etc.
-   */
-  .slider {}
-
-  .frame {
-
-      position: relative;
-      font-size: 0;
-      line-height: 0;
-      overflow: hidden;
-      white-space: nowrap;
+  .overlay {
+    // background-color: rgba($black, .7);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    font-size: 0;
+    text-align: center;
+    &:before {
+      content: '';
+      width: 0;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .inner {
+      font-size: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+      
+    }
+    h1 {
+      // font-size: 4em;
+      font-weight: 100;
+      font-style: italic;
+      text-align: center;
+      a {
+        color: $white;
+      }
+    }
+    span {
+      display: block;
+    }
   }
+}
+#instagram {
+  a {
+    display: block;
+    @include gallery(2 of 12 0);
+  }
+}
+.clr {
+  &:before, &:after {
+    content:'';
+    clear: both;
+    display: block;
+  }
+}
+#instafeed {
+  @extend .clr;
+  img {
+    width: 100%; 
+  }
+}
+.slider, .frame, .slides, .js_slide {
+  height: 100%;
+}
+.js_slide {
+  background-repeat: no-repeat;
+  background-size: cover;
+  img {
+    width: 100%;
+  }
+}
+/**
+ * (optional) define here the style definitions which should be applied on the slider container
+ * e.g. width including further controls like arrows etc.
+ */
+.slider {}
 
-  .slides {
+.frame {
+
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.slides {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    li {
+      position: relative;
       display: inline-block;
       width: 100%;
-      margin: 0;
-      padding: 0;
-      li {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        /**
-         * (optional) if the content inside the slide element has a defined size.
-         */
-      }
-  }
+      /**
+       * (optional) if the content inside the slide element has a defined size.
+       */
+    }
+}
 
-  
-  
-  .prev, .next {
-      position: absolute;
-      top: 50%;
-      margin-top: -25px;
-      display: block;
-      cursor: pointer;
-  }
 
-  .next {
-      right: 2em;
-  }
 
-  .prev {
-      left: 2em;
-  }
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    display: block;
+    cursor: pointer;
+}
 
-  .next svg, .prev svg {
-      width: 25px;
-  }
+.next {
+    right: 2em;
+}
+
+.prev {
+    left: 2em;
+}
+
+.next svg, .prev svg {
+    width: 25px;
+}
 </style>

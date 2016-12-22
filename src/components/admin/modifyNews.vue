@@ -9,7 +9,7 @@
       .controls
         input(type="file", name="thumbnail")
         .preview(v-if="article.thumbnail")
-          img(:src="article.thumbnail")
+          img(v-bind:src="article.thumbnail")
     .contorlgroup
       label 文章
       .controls
@@ -78,10 +78,10 @@ export default {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           var downloadURL = uploadTask.snapshot.downloadURL
-          instance.$firebaseRefs.news.push({
+          instance.$firebaseRefs.news.child(instance.$route.params.id).set({
             thumbnail: downloadURL,
-            title: e.target.elements.title.value,
-            content: instance.content,
+            title: instance.article.title,
+            content: instance.article.content,
             time: firebase.database.ServerValue.TIMESTAMP
           }).then((res) => {
             instance.$router.push('/admin/home/news/list')
@@ -89,7 +89,7 @@ export default {
         })
       } else {
         console.log('no file')
-        instance.$firebaseRefs.news.child(this.$route.params.id).set({
+        instance.$firebaseRefs.news.child(instance.$route.params.id).set({
           title: instance.article.title,
           content: instance.article.content,
           time: firebase.database.ServerValue.TIMESTAMP

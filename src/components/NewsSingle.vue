@@ -1,7 +1,7 @@
 <template lang="pug">
   #singleNews
     article
-      .cover(:style="'background-image:url(' + article.thumbnail + ');'")
+      .cover(v-bind:style="'background-image:url(' + article.thumbnail + ');'")
         .title
           h1 {{article.title}}
       .meta
@@ -88,6 +88,7 @@ export default {
   }
   .content {
     color: $darkestgray;
+    font-size: 1.1em;
   }
 }
 </style>

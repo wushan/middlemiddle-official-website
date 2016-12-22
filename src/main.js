@@ -59,6 +59,8 @@ const router = new VueRouter({
     { path: '/', component: Container, children: 
       [
         { path: '', component: Home },
+        { path: 'fun', component: Home, name: 'fun' },
+        { path: 'foods', component: Home, name: 'foods' },
         { path: 'news', component: NewsWrapper, children: 
           [
             { path: 'single/:id', component: NewsSingle }

@@ -15,8 +15,6 @@ $yellow: #ffd150;
 $main-dark: darken($main, 20%);
 $main-light: lighten($main, 20%);
 
-
-
 //Fonts
-$sans-serif: "Noto Sans TC", "proxima-nova", "Helvetica Neue", Arial, "source-han-sans-traditional", sans-serif;
-$brandon: "brandon-grotesque", "Helvetica Neue", Arial, "source-han-sans-traditional", sans-serif;
+$sans-serif: 'Roboto Slab', "Noto Sans TC", "proxima-nova", "Helvetica Neue", Arial, "source-han-sans-traditional", sans-serif;
+$brandon: 'Roboto Slab', "brandon-grotesque", "Helvetica Neue", "Noto Sans TC", Arial, "source-han-sans-traditional", sans-serif;

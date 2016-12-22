@@ -59,7 +59,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-h1 {
-  color: #42b983;
-}
 </style>

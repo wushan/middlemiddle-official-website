@@ -3,9 +3,9 @@
   ul
     li(v-for="article in news")
       .thumbnail
-        img(:src="article.thumbnail")
+        img(v-bind:src="article.thumbnail")
       .title
-        router-link(:to="'/admin/home/news/modify/' + article['.key']") {{article.title}}
+        router-link(v-bind:to="'/admin/home/news/modify/' + article['.key']") {{article.title}}
       .date(v-timetag="article.time") {{news.time}}
 </template>
 <script>
