@@ -42,7 +42,7 @@
             img(src='../assets/images/components/rainbowflag-shadow.svg')
 
       fun
-      section#about(data-vide-bg='/static/video/bg')
+      section#about
         .row.restrict
           .block
             img(src='../assets/images/components/avatar.png')
@@ -126,22 +126,28 @@ require('imports?$=jquery!../assets/vendor/jquery.vide.min.js')
 export default {
   name: 'Home',
   watch: {
-    '$route': 'jumpTo'
+    '$route': 'adjustPosition'
   },
   methods: {
     adjustPosition (dom) {
+      console.log('route changes')
+      if (this.$route.name) {
+        dom = this.$route.name
+      } else {
+        dom = 'home'
+      }
       var target = document.getElementById(dom)
       // var targetId = '#' + dom
-      if (target.offsetTop - window.scrollY > 74) {
+      if (window.scrollY + 74 > target.offsetTop && window.scrollY - 74 < target.offsetTop) {
+        console.log('passed')
+      } else {
         console.log('repeating')
         jump('#' + dom, {
           duration: 1000,
           offset: -72,
-          callback: () => this.adjustPosition('fun'),
+          callback: () => this.adjustPosition(dom),
           a11y: false
         })
-      } else {
-        console.log('passed')
       }
     },
     jumpTo () {
@@ -158,6 +164,8 @@ export default {
     }
   },
   mounted () {
+    this.adjustPosition()
+    $('#about').vide('/static/video/bg')
     // document.addEventListener('DOMContentLoaded', () => {
     //     const slider = document.querySelector('.js_slider');
 
@@ -170,24 +178,14 @@ export default {
       // options going here
       infinite: 1
     })
-    // jump according to route match
-    if (this.$route.path === '/fun') {
-      console.log('matched')
-      jump('#fun', {
-        duration: 1000,
-        offset: -72,
-        callback: () => this.adjustPosition('fun'),
-        a11y: false
-      })
-    }
-    if (this.$route.hash) {
-      jump(this.$route.hash, {
-        duration: 1000,
-        offset: -72,
-        callback: undefined,
-        a11y: false
-      })
-    }
+    // if (this.$route.hash) {
+    //   jump(this.$route.hash, {
+    //     duration: 1000,
+    //     offset: -72,
+    //     callback: undefined,
+    //     a11y: false
+    //   })
+    // }
     // Map
     $.fn.tinyMapConfigure({
       // Google Maps API Key，預設 null

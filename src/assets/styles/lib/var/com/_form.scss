@@ -35,7 +35,23 @@
     }
   }
 }
-
+.check-group {
+  .check-item {
+    display: inline-block;
+    vertical-align: middle;
+    label {
+      cursor: pointer;
+    }
+    input {
+      display: inline-block;
+      vertical-align: middle;
+      width: auto;
+      & + span {
+        margin-left: .5em;
+      }
+    }
+  }
+}
 textarea {
   width: 100%;
   border: 1px solid $gray;

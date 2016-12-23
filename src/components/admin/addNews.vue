@@ -3,11 +3,27 @@
     .contorlgroup
       label 文章標題
       .controls
-        input(type="text", name="title")
+        input(type="text", name="title", v-model="title")
     .controlgroup
+      label 類型
+      .controls
+        .check-group
+          .check-item
+            label
+              input(type="radio", name="type", v-model="type", value="image")
+              span 圖片
+          .check-item
+            label
+              input(type="radio", name="type", v-model="type", value="video")
+              span 影片
+    .controlgroup(v-if="type === 'image'")
       label File
       .controls
         input(type="file", name="thumbnail")
+    .controlgroup(v-else)
+      label 影片網址
+      .controls
+        input(type="text", name="videourl", v-model="videourl")
     .contorlgroup
       label 文章
       .controls
@@ -39,7 +55,9 @@ export default {
   },
   data () {
     return {
+      type: 'image',
       content: null,
+      videourl: null,
       editorOption: {
        // something config
       }
@@ -48,40 +66,60 @@ export default {
   methods: {
     addNews (e) {
       var instance = this
-      console.log(e.target.elements.thumbnail.files[0])
-      var file = e.target.elements.thumbnail.files[0]
-      var imagesRef = storageRef.child(uuid.v4())
-      var uploadTask = imagesRef.put(file)
-      // Progress
-      uploadTask.on('state_changed', function (snapshot) {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        console.log('Upload is ' + progress + '% done')
-        switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused')
-            break
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running')
-            break
-        }
-      }, function (error) {
-        // Handle unsuccessful uploads
-        console.log(error)
-      }, function () {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        var downloadURL = uploadTask.snapshot.downloadURL
+      var file
+      if (e.target.elements.thumbnail) {
+        file = e.target.elements.thumbnail.files[0]
+      } else {
+        file = false
+      }
+      if (file) {
+        var imagesRef = storageRef.child(uuid.v4())
+        var uploadTask = imagesRef.put(file)
+        // Progress
+        uploadTask.on('state_changed', function (snapshot) {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused')
+              break
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running')
+              break
+          }
+        }, function (error) {
+          // Handle unsuccessful uploads
+          console.log(error)
+        }, function () {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          var downloadURL = uploadTask.snapshot.downloadURL
+          instance.$firebaseRefs.news.push({
+            type: instance.type,
+            videourl: instance.videourl,
+            thumbnail: downloadURL,
+            title: instance.title,
+            content: instance.content,
+            time: firebase.database.ServerValue.TIMESTAMP
+          }).then((res) => {
+            instance.$router.push('list')
+          })
+        })
+      } else {
+        // Video Mode
         instance.$firebaseRefs.news.push({
-          thumbnail: downloadURL,
-          title: e.target.elements.title.value,
+          type: instance.type,
+          videourl: instance.videourl,
+          thumbnail: null,
+          title: instance.title,
           content: instance.content,
           time: firebase.database.ServerValue.TIMESTAMP
         }).then((res) => {
           instance.$router.push('list')
         })
-      })
+      }
     },
     onEditorBlur (editor) {
       console.log('editor blur!', editor)

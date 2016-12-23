@@ -1,12 +1,19 @@
 <template lang="pug">
   #singleNews
     article
-      .cover(v-bind:style="'background-image:url(' + article.thumbnail + ');'")
-        .title
+      .cover(v-bind:style="'background-image:url(' + article.thumbnail + ');'", v-bind:class="{video:article.videourl}")
+        .video-wrapper.restrict(v-if="article.videourl")
+            iframe(width="1280", height="720", v-bind:src="'https://www.youtube.com/embed/' + article.videourl" frameborder="0", allowfullscreen)
+        .title.restrict(v-else)
           h1 {{article.title}}
       .meta
-        .restrict(v-timetag="article.time")
-      .content.restrict(v-html="article.content")
+        .restrict
+          .author(itemprop="author") 中中親子樂園
+          time(v-timetag="article.time")
+      .content.restrict
+        .title.restrict(v-if="article.videourl")
+          h1 {{article.title}}
+        .context(v-html="article.content")
 </template>
 
 <script>
@@ -63,6 +70,10 @@ export default {
             align-content: center;
     -webkit-justify-content: center;
             justify-content: center;
+    &.video {
+      height: auto;
+      background-color: $darkestgray;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -71,20 +82,52 @@ export default {
       bottom: 0;
       right: 0;
       background-color: rgba($black, .6);
+      pointer-events: none;
     }
     .title {
       align-self: center;
       position: relative;
+      text-align: center;
       z-index: 1;
       h1 {
         color: $white;
       }
     }
   }
+  .video-wrapper {
+    position: relative;
+    flex: 1;
+    z-index: 1;
+    overflow: hidden;
+    padding: 0;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
   .meta {
-    text-align: right;
     background-color: $main;
     color: $white;
+    font-size: 12px;
+    .restrict {
+      display: flex;
+    }
+    .author, time {
+      flex: 1;
+      opacity: .5;
+    }
+    time {
+      text-align: right;
+    }
   }
   .content {
     color: $darkestgray;

@@ -5,31 +5,31 @@
     ul
       li
         //- a(href="javascript:;", @click="jumpTo('home')")
-        router-link(v-bind:to="{ path: '/', hash: 'home'}")
+        router-link(v-bind:to="{ path: '/home'}", itemprop="url")
           span 首頁
           span HOME
       li
         //- a(href="javascript:;", @click="jumpTo('fun')")
-        router-link(v-bind:to="{ path: '/fun'}")
+        router-link(v-bind:to="{ path: '/fun'}", itemprop="url")
           span 遊戲
           span FUN
       li
         //- a(href="javascript:;", @click="jumpTo('foods')")
-        router-link(v-bind:to="{ path: '/foods'}")
+        router-link(v-bind:to="{ path: '/foods'}", itemprop="url")
           span 美食
           span FOODS
       li
         //- a(href="javascript:;", @click="jumpTo('reservation')")
-        router-link(v-bind:to="{ path: '/reservation'}")
+        router-link(v-bind:to="{ path: '/reservation'}", itemprop="url")
           span 預約規則
           span RESERVATION
       li
         //- a(href="javascript:;", @click="jumpTo('map')")
-        router-link(v-bind:to="{ path: '/', hash: 'map'}")
+        router-link(v-bind:to="{ path: '/map'}", itemprop="url")
           span 導航
           span LOCATION
       li
-        router-link(to="/wall", activeClass="active")
+        router-link(to="/wall", activeClass="active", itemprop="url")
           span 恐龍牆
           span DINOWALL
     a.js-mobile-trigger.mobile-trigger.icons-mobile-btn.sb-toggle-left(href='javascript:;')

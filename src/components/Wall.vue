@@ -1,12 +1,13 @@
 <template lang="pug">
-  div
-    h1 WALL
-    form(@submit.prevent.stop="uploadFile")
-      .controlgroup
-        label file
-        .controls
-          input(type="file", name="file")
-      button(type='submit') submit
+  #dinoWall
+    .restrict-l
+      h1 Wall of Dinosaurs
+      //- form(@submit.prevent.stop="uploadFile")
+      //-   .controlgroup
+      //-     label file
+      //-     .controls
+      //-       input(type="file", name="file")
+      //-   button(type='submit') submit
 </template>
 
 <script>
@@ -40,4 +41,10 @@ export default {
 </script>
 
 <style lang="scss">
+#dinoWall {
+  margin-top: 72px;
+  h1 {
+    text-align: center;
+  }
+}
 </style>

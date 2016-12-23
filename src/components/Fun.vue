@@ -7,9 +7,9 @@
           .overlay
         .description
           .description-inner
-            h2.
+            h2(itemprop="name").
               溜滑梯<span>Super Slide</span>
-            p.
+            p(itemprop="description").
               「中中親子樂園」引進義大利進口筒狀螺旋溜滑梯，3.5 公尺超高設計，溜下時能體驗宛如自由落體般的速度快感，讓孩子們對於他們最愛的溜滑梯有全新感受。
         
       .fun-feature
@@ -18,9 +18,9 @@
           .overlay
         .description
           .description-inner
-            h2.
+            h2(itemprop="name").
               木製玩具<span>Mentari Plaza</span>
-            p.
+            p(itemprop="description").
               中中親子樂園採用在木頭玩具領域耕耘超過 20 年，產品符合 SGS 國際認證的玩具品牌 Mentari ，木質玩具豐富的觸感與益智功能，讓您的小朋友能夠安安心心的玩玩具！*本店提供 Mentari 木製玩具代購，若在店內看到喜歡的木頭玩具也可以詢問店員！
       .fun-feature
         .thumbnail
@@ -28,9 +28,9 @@
           .overlay
         .description
           .description-inner
-            h2.
+            h2(itemprop="name").
               寶寶專屬<span>Baby fun</span>
-            p.
+            p(itemprop="description").
               「中中親子樂園」特別為小小寶貝開闢專屬的遊戲專區，藉由特別訂製的軟墊與圍欄，不只讓寶寶玩得開心，爸爸媽媽也不用再擔心小寶貝撞來撞去發生危險！
 
       .fun-feature
@@ -39,9 +39,9 @@
           .overlay
         .description
           .description-inner
-            h2.
+            h2(itemprop="name").
               超大空間<span>Playground</span>
-            p.
+            p(itemprop="description").
               「中中親子樂園」，盡可能地壓縮用餐空間，為小朋友提供大量的遊戲場所，不定期更新各類玩具、童書，讓小朋友快樂吃，開心玩，不再吵著要回家！
 </template>
 

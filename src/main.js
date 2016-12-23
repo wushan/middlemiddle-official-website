@@ -42,6 +42,7 @@ const scrollBehavior = (to, from, savedPosition) => {
 import Container from './components/Container'
 import NewsWrapper from './components/NewsWrapper'
 import NewsSingle from './components/NewsSingle'
+import Privacy from './components/Privacy'
 // Admin
 import Admin from './components/admin/Admin'
 import Adminhome from './components/admin/Home'
@@ -61,12 +62,16 @@ const router = new VueRouter({
         { path: '', component: Home },
         { path: 'fun', component: Home, name: 'fun' },
         { path: 'foods', component: Home, name: 'foods' },
+        { path: 'home', component: Home, name: 'home' },
+        { path: 'reservation', component: Home, name: 'reservation' },
+        { path: 'map', component: Home, name: 'map' },
         { path: 'news', component: NewsWrapper, children: 
           [
             { path: 'single/:id', component: NewsSingle }
           ]
         },
         { path: 'wall', component: Wall },
+        { path: 'privacy', component: Privacy, name: 'privacy' },
       ]
     },
     { path: '/admin', component: Admin, children:
@@ -120,6 +125,6 @@ window.fbAsyncInit = function() {
    var js, fjs = d.getElementsByTagName(s)[0];
    if (d.getElementById(id)) {return;}
    js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk/debug.js";
+   js.src = "//connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));

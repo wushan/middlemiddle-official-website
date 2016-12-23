@@ -4,8 +4,9 @@
       ul
         li(v-for="news in newsList", :key="news['.key']")
           .thumbnail
-            router-link(v-bind:to="'/news/single/' + news['.key']")
+            router-link(v-bind:to="'/news/single/' + news['.key']", v-if="news.type === 'image'")
               img(v-bind:src="news.thumbnail")
+            iframe(v-else, width="1280", height="720", v-bind:src="'https://www.youtube.com/embed/' + news.videourl" frameborder="0", allowfullscreen)
           .news-content
             h4.title
               router-link(v-bind:to="'/news/single/' + news['.key']") {{news.title}}
@@ -65,6 +66,18 @@ export default {
   @include breakpoint(1024px) {
     min-height: 900px;
   }
+  @include breakpoint(1280px) {
+    min-height: 430px;
+  }
+  // .video-container {
+  //   padding-bottom: 56.2%;
+  //   position: relative;
+  //   iframe {
+  //     position: absolute;
+  //     width: 100%;
+  //     height: auto;
+  //   }
+  // }
   ul {
     display: block;
     padding: 1em;
@@ -94,7 +107,7 @@ export default {
       display: block;
       content: "";
       width: 100%;
-      padding-top: 56.25%;
+      padding-bottom: 56.25%;
     }
     img {
       position: absolute;
@@ -103,10 +116,20 @@ export default {
       right: 0;
       bottom: 0;
     }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   .title {
     a {
       color: $black;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .content {
