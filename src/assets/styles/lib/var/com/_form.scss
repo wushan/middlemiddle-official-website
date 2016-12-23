@@ -52,21 +52,21 @@
     }
   }
 }
-textarea {
-  width: 100%;
-  border: 1px solid $gray;
-  box-sizing: border-box;
-  height: 44px;
-  background-color: $smokygray;
-  padding: 1em;
-  outline: none;
-  min-height: 200px;
-  &:focus {
-    border: 1px solid $main-dark;
-    background-color: $main-dark;
-    color: $white;
-  }
-}
+// textarea {
+//   width: 100%;
+//   border: 1px solid $gray;
+//   box-sizing: border-box;
+//   height: 44px;
+//   background-color: $smokygray;
+//   padding: 1em;
+//   outline: none;
+//   min-height: 200px;
+//   &:focus {
+//     border: 1px solid $main-dark;
+//     background-color: $main-dark;
+//     color: $white;
+//   }
+// }
 input, input[type=search] {
   width: 100%;
   border: 1px solid $gray;

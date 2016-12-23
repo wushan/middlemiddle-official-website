@@ -8,6 +8,8 @@
           h1 {{article.title}}
       .meta
         .restrict
+          .back
+            router-link(to="/") 返回
           .author(itemprop="author") 中中親子樂園
           time(v-timetag="article.time")
       .content.restrict
@@ -120,6 +122,14 @@ export default {
     font-size: 12px;
     .restrict {
       display: flex;
+    }
+    .back {
+      flex: initial;
+      width: 50px;
+      a {
+        color: $white;
+        text-decoration: underline;
+      }
     }
     .author, time {
       flex: 1;

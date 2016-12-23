@@ -29,12 +29,13 @@
       .controls
         //- textarea(name="content")
         .textarea-wrapper
-          quill-editor(ref="myTextEditor", v-model="content", :config="editorOption", @blur="onEditorBlur($event)", @focus="onEditorFocus($event)", @ready="onEditorReady($event)")
+          //- quill-editor(ref="myTextEditor", v-model="content", :config="editorOption", @blur="onEditorBlur($event)", @focus="onEditorFocus($event)", @ready="onEditorReady($event)")
+          textarea#editor
     .call-action
       button.btn.basic.full(type="submit") Submit
 </template>
 <script>
-import { quillEditor } from 'vue-quill-editor'
+import SimpleMDE from 'simplemde'
 import firebase from 'firebase'
 var db = firebase.database()
 // var storage = firebase.storage()
@@ -44,9 +45,16 @@ export default {
   name: 'addNews',
   props: ['validuser'],
   components: {
-    quillEditor
   },
   mounted () {
+    var simplemde
+    simplemde = new SimpleMDE({
+      element: document.getElementById('editor'),
+      spellChecker: false
+    })
+    simplemde.codemirror.on('change', () => {
+      this.content = simplemde.value()
+    })
     // if (this.validuser) {
     //   this.$nextTick(() => {
     //     this.$router.push('/admin')
@@ -143,4 +151,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import '../../assets/vendor/simplemde'
 </style>

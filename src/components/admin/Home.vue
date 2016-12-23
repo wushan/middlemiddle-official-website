@@ -9,7 +9,6 @@
 
 <script>
 import Sidebar from './Sidebar'
-import { quillEditor } from 'vue-quill-editor'
 import firebase from 'firebase'
 var db = firebase.database()
 // var storage = firebase.storage()
@@ -19,7 +18,6 @@ export default {
   name: 'Home',
   props: ['validuser'],
   components: {
-    quillEditor,
     Sidebar
   },
   mounted () {

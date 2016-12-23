@@ -15,33 +15,39 @@
       .controls
         //- textarea(name="content")
         .textarea-wrapper
-          quill-editor(ref="myTextEditor", v-model="article.content", :config="editorOption", @blur="onEditorBlur($event)", @focus="onEditorFocus($event)", @ready="onEditorReady($event)")
+          textarea#editor
     .call-action
       button.btn.basic.full(type="submit") Submit
 </template>
 <script>
-import { quillEditor } from 'vue-quill-editor'
+import SimpleMDE from 'simplemde'
 import firebase from 'firebase'
 var db = firebase.database()
 // var storage = firebase.storage()
 var storageRef = firebase.storage().ref()
 import uuid from 'uuid'
+var simplemde
 export default {
   name: 'addNews',
   props: ['validuser'],
   components: {
-    quillEditor
   },
   created () {
     this.loading = true
     this.$bindAsObject('article', db.ref('news').child(this.$route.params.id))
   },
   mounted () {
-    // if (this.validuser) {
-    //   this.$nextTick(() => {
-    //     this.$router.push('/admin')
-    //   })
-    // }
+    simplemde = new SimpleMDE({
+      element: document.getElementById('editor'),
+      spellChecker: false
+    })
+    simplemde.value(this.article.content)
+    simplemde.codemirror.on('change', () => {
+      this.article.content = simplemde.value()
+    })
+  },
+  updated () {
+    simplemde.value(this.article.content)
   },
   data () {
     return {

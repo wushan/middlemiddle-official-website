@@ -1,5 +1,5 @@
 <template lang="pug">
-  #newsCard
+  #newsCard(v-if="newsList")
     .restrict-l
       ul
         li(v-for="news in newsList", :key="news['.key']")
@@ -135,7 +135,7 @@ export default {
   .content {
     color: $darkgray;
     font-size: 14px;
-    height: 5em;
+    height: 4em;
     overflow: hidden;
   }
   .date {

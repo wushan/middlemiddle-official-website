@@ -5,6 +5,8 @@
         router-link(to="/admin/home", active-class="active" exact) 管理首頁
       li
         router-link(to="/admin/home/news", active-class="active" exact) 新聞
+      li
+        a(@click="signout") 登出
 
 </template>
 
@@ -21,6 +23,9 @@ export default {
     }
   },
   methods: {
+    signout () {
+      this.$parent.$emit('signout')
+    }
   }
 }
 </script>
