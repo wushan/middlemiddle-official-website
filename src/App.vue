@@ -55,6 +55,10 @@ export default {
         text-align: center;
         h1 {
           font-weight: 300;
+          span {
+            display: block;
+            font-size: .5em;
+          }
         }
       }
       
