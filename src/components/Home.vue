@@ -1,30 +1,29 @@
 <template lang="pug">
   main
     #home
-      section#introslider
-        .slider.js_slider
-          .frame.js_frame
-            ul.slides.js_slides
-              li.js_slide
-                img(src="../assets/images/slider/main-slide-1.jpg")
-              li.js_slide
-                img(src="../assets/images/slider/main-slide-2.jpg")
-              li.js_slide
-                img(src="../assets/images/slider/main-slide-3.jpg")
-              li.js_slide
-                img(src="../assets/images/slider/main-slide-4.jpg")
-          span.js_prev.prev
-            svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
-              g
-                path(fill="#2E435A", d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z")
+      //- section#introslider
+      //-   .slider.js_slider
+      //-     .frame.js_frame
+      //-       ul.slides.js_slides
+      //-         li.js_slide
+      //-           img(src="../assets/images/slider/main-slide-1.jpg")
+      //-         li.js_slide
+      //-           img(src="../assets/images/slider/main-slide-2.jpg")
+      //-         li.js_slide
+      //-           img(src="../assets/images/slider/main-slide-3.jpg")
+      //-         li.js_slide
+      //-           img(src="../assets/images/slider/main-slide-4.jpg")
+      //-     span.js_prev.prev
+      //-       svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
+      //-         g
+      //-           path(fill="#2E435A", d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z")
 
-          span.js_next.next
-            svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
-              g
-                path(fill="#2E435A", d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z")
-          //- prev(slot="actions")
-          //- next(slot="actions")
-      news
+      //-     span.js_next.next
+      //-       svg(xmlns="http://www.w3.org/2000/svg", width="50", height="50", viewBox="0 0 501.5 501.5")
+      //-         g
+      //-           path(fill="#2E435A", d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z")
+      //-     //- prev(slot="actions")
+      //-     //- next(slot="actions")
       section#intro
         .intro-inner
           .header
@@ -33,14 +32,16 @@
             .row.restrict
               .block
                 .title
-                  h1 孩子們的快樂天堂
+                  h1
+                    | 中中親子樂園
+                    span 孩子們的快樂天堂
                 p.
                   一個安全、舒適，能讓孩子與家長們真正放鬆的地方，一起動腦玩拼圖、疊積木，開心地推著嘎嘎作響的滑步車，讓每位來到這裡的朋友，見到孩子與自己發自內心的笑容，是我們時時提醒自己的初衷。
               .block
                 img(src='../assets/images/components/dino.svg')
           .footer
             img(src='../assets/images/components/rainbowflag-shadow.svg')
-
+      news
       fun
       section#about
         .row.restrict
@@ -75,6 +76,287 @@
             p.
               「中中親子樂園」只提供您最天然的食材，用最簡單的烹煮方法，讓您享用食材最原始的滋味。<br>在這裡，您只吃得到我們自己以及給孩子吃的食物，相信我們，一定比您更重視「食」的安全。
           img(src='../assets/images/components/dish.png')
+      section#dish
+        header
+          h1 菜單 Dishes
+        .main
+          .restrict-l
+            h3
+              | 墨西哥餅
+              span Quesadilla
+            ul.dishes
+              li
+                .name
+                  | 厚切烤肉墨西哥餅
+                  span Chinese BBQ(Pork) Quesadilla
+                .price 180
+              li
+                .name
+                  | 煙燻雞肉墨西哥餅
+                  span Chinese BBQ(Pork) Quesadilla
+                .price 180
+              li
+                .name
+                  | 蔬果墨西哥餅
+                  span Vegetable and Fruits Quesadilla
+                .price 180
+              li
+                .name
+                  | 義式煙薰德腸墨西哥餅
+                  span Würstchen Quesadilla
+                .price 180
+              li
+                .name
+                  | 鮪魚起士墨西哥餅
+                  span Tuna Quesadilla
+                .price 180
+            h3
+              | 主餐
+              span Main Dish
+            ul.dishes
+              li
+                .name
+                  | 清燉香菇雞湯麵
+                  span Chicken soup with noodles
+                .price 160
+              li
+                .name
+                  | 日式咖哩起士豬排飯
+                  span Japanese style curry rice with deep fried pork chop
+                .price 180
+              li
+                .name
+                  | 南洋青醬奶油燻雞燉飯
+                  span Pesto Risotto with smoked chicken
+                .price 180
+              li
+                .name
+                  | 佛羅倫斯青醬義大利麵
+                  span Spaghetti with mushroom and Pesto
+                .price 180
+              li
+                .name
+                  | 鄉村奶油野菇燉飯
+                  span Cream Risotto with mushroom
+                .price 180
+              li
+                .name
+                  | 奶油起士燻雞義大利麵
+                  span Spaghetti with smoked chicken and cream sauce
+                .price 180
+              li
+                .name
+                  | 義式番茄德腸義大利麵
+                  span Spaghetti with Würstchen and tomato sauce
+                .price 180
+              li
+                .name
+                  | 傳統義大利肉醬麵
+                  span Spaghetti Bolognese
+                .price 180
+              li
+                .name
+                  | 中中阿嬤私房菜
+                  span Grandma's Special Dish
+                .price 時價
+            .annoucements.centered
+              p 中中阿嬤私房菜僅在週末或連續假期供應，並且經常性的更新菜色，供應數量有限，售完為止！
+              p 如果您有吃到阿嬤的味道，歡迎跟我們分享！
+            h3
+              | 厚片
+              span Thick cut Toast
+            ul.dishes
+              li
+                .name
+                  | 一粒粒花生厚片
+                  span Thick cut toast with peanut butter 
+                .price 70
+              li
+                .name
+                  | Nutella 巧克力厚片
+                  span Thick cut toast with Nutella
+                .price 70
+              li
+                .name
+                  | 中中新鮮大蒜厚片
+                  span Thick cut toast with homemade garlic spread
+                .price 80
+              li
+                .name
+                  | 魚兒魚兒游啊游
+                  span Thick cut toast with tuna and cheese
+                .price 100
+              li
+                .name
+                  | 起士玉米厚片
+                  span Thick cut toast with corn and cheese
+                .price 100
+            h3
+              | 點心
+              span Snacks
+            ul.dishes
+              li
+                .name
+                  | 脆皮薯條
+                  span French Fries
+                .price 80
+              li
+                .name
+                  | 酥炸洋蔥圈
+                  span Onion Rings
+                .price 100
+              li
+                .name
+                  | 牽絲起士條
+                  span Mozzarella Sticks
+                .price 120
+              li
+                .name
+                  | 好好吃雞塊
+                  span Chicken Nuggets
+                .price 100
+              li
+                .name
+                  | 四種好滿足
+                  span I want them all
+                .price 250
+            h3
+              | 鬆餅
+              span Waffles
+            ul.dishes
+              li
+                .name
+                  | 香蕉巧克力鬆餅
+                  span Banana Chocolate Waffle
+                .price 170
+              li
+                .name
+                  | QQ 麻糬鬆餅
+                  span Mochi Waffle
+                .price 170
+              li
+                .name
+                  | 莓果鬆餅
+                  span Berries Waffle
+                .price 180
+              li
+                .name
+                  | 蜜香鬆餅
+                  span Honey Waffle
+                .price 170
+            h3
+              | 咖啡
+              span Coffee
+            ul.dishes
+              li
+                .name
+                  | 美式咖啡
+                  span Americano
+                .price 80
+              li
+                .name
+                  | 曼特寧咖啡
+                  span Medellin Coffee
+                .price 120
+              li
+                .name
+                  | 巴西咖啡
+                  span Brazilian Coffee
+                .price 100
+              li
+                .name
+                  | 曼巴咖啡
+                  span Medellin and Brazilian Coffee
+                .price 120
+              li
+                .name
+                  | 拿鐵
+                  span Latte
+                .price 100
+              li
+                .name
+                  | 豆漿拿鐵
+                  span Soy Latte
+                .price 100
+              li
+                .name
+                  | 摩卡
+                  span Coffee Mocha
+                .price 120
+            h3
+              | 飲料
+              span Drinks
+            ul.dishes
+              li
+                .name
+                  | 紅茶
+                  span Black Tea
+                .price 60
+              li
+                .name
+                  | 熱可可
+                  span Hoy Chocolate
+                .price 80
+              li
+                .name
+                  | 中中奶茶
+                  span Milk Tea Special
+                .price 80
+              li
+                .name
+                  | 鮮奶茶
+                  span Milk Tea
+                .price 100
+              li
+                .name
+                  | 黑糖鮮奶
+                  span Milk with dark brown sugar
+                .price 100
+              li
+                .name
+                  | 芝麻豆漿
+                  span Sesame soy milk
+                .price 80
+              li
+                .name
+                  | 豆漿紅茶
+                  span Soy milk + black tea
+                .price 80
+              li
+                .name
+                  | 香濃豆漿
+                  span Soy Milk
+                .price 60
+              li
+                .name
+                  | 時令果汁
+                  span Juice
+                .price 120
+              li
+                .name
+                  | 可可歐蕾
+                  span Cocoa aulait
+                .price 100
+              li
+                .name
+                  | 草莓歐蕾
+                  span Strawberry aulait
+                .price 100
+              li
+                .name
+                  | 有機南非博士紅茶
+                  span Organic rooibos tea
+                .price 100
+              li
+                .name
+                  | 有機南非博士綠茶
+                  span Organic green rooibos tea
+                .price 120
+              li
+                .name
+                  | 有機南非博士綠蜜樹茶
+                  span Organic green rooibos honeybush tea
+                .price 120
       section#reservation
         .reservation-inner.restrict-l
           header
@@ -117,7 +399,7 @@ import News from './News'
 import Fun from './Fun'
 import Instafeed from 'instafeed.js'
 import jump from 'jump.js'
-import {lory} from 'lory.js'
+// import {lory} from 'lory.js'
 // Expose Jquery Globally.
 import $ from 'jquery'
 window.jQuery = window.$ = $
@@ -173,11 +455,11 @@ export default {
     //         // options going here
     //     });
     // });
-    const slider = document.querySelector('.js_slider')
-    lory(slider, {
-      // options going here
-      infinite: 1
-    })
+    // const slider = document.querySelector('.js_slider')
+    // lory(slider, {
+    //   // options going here
+    //   infinite: 1
+    // })
     // if (this.$route.hash) {
     //   jump(this.$route.hash, {
     //     duration: 1000,
@@ -388,6 +670,63 @@ export default {
       .block {
         // @include gallery(4 of 12 1);
       }
+    }
+  }
+}
+#dish {
+  padding-top: 6em;
+  header {
+    text-align: center;
+    h1 {
+      margin: 0;
+    }
+  }
+  h3 {
+    font-weight: bold;
+    line-height: 1.2;
+    span {
+      display: block;
+      font-size: .7em;
+      color: $darkgray;
+    }
+  }
+  .annoucements {
+    background-color: $smokygray;
+    padding: 1em 2em;
+    box-sizing: border-box; 
+  }
+  ul.dishes {
+    display: block;
+    @extend .clr;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      display: flex;
+      margin-bottom: 1em;
+      padding-bottom: .5em;
+      border-bottom: 1px solid $lightgray;
+      @include breakpoint(768px) {
+        @include gallery(6 of 12 2);
+      }
+      @include breakpoint(1280px) {
+        @include gallery(4 of 12 2);
+      }
+    }
+    .name {
+      font-size: 1.1em;
+      flex: 1;
+      span {
+        display: block;
+        font-weight: normal;
+        font-size: .7em;
+        color: $darkgray;
+      }
+    }
+    .price {
+      text-align: right;
+      font-size: 1.2em;
+      font-weight: 100;
     }
   }
 }
